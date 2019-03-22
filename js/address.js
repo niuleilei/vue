@@ -1,0 +1,43 @@
+var vm=new Vue({
+	el:"#address",
+	data:{
+		addressList:[],
+		defualtIndex:0,
+		minLength:3
+	},
+	mounted:function(){
+		this.$nextTick(function(){
+			this.load()
+		})
+	},
+	computed:{
+		filterList:function(){
+			return this.addressList.slice(0,this.minLength)
+		}
+	}
+	,
+	methods:{
+		load:function(){
+			var _this=this;
+			this.$http.get('data/address.json').then(function(data){
+				console.log(data.data)
+				console.log(data.data.result.length)
+					_this.addressList=data.data.result
+			})
+		},
+		//设为默认
+		setDefualt:function(e){
+			this.addressList.forEach(function(item,index){
+				if(index==e){
+					item.isDefault=true
+				}else{
+					item.isDefault=false
+				}
+			})
+		},
+	//删除
+	deleteBox:function(index){
+		this.addressList.splice(index,1)
+	}
+	}
+})

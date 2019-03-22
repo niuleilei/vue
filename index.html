@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title></title>
+		<script type="text/javascript" src="js/vue.js" ></script>
+		<style>
+			.box_p{text-align: center;}
+			.box_bg{border: 1px solid #ccc;}
+			.box_font{font-size: 18px;}
+		</style>
+	</head>
+	<body>
+		<div id="demo">{{ fullName }}</div>
+		<div id="app">
+			<p class="box_p" :style="objStyle" :class="[{box_bg:istrue},box_font]">爱的方式大是大非</p>
+		</div>
+		<div id="app1">
+			<template  v-if='intType==="user"'>
+				<label>帐号</label>
+				<input type="text" placeholder="帐号" key='input_user' />
+			</template>
+			<template  v-else>
+				<label>密码</label>
+				<input type="text" placeholder="密码" key='input_passWord' />
+			</template>
+			<button v-on:click="change">点击</button>
+		</div>
+		<div id="app2">
+			<ul>
+				<li v-for="(item,index) in items">{{index}}-{{item.name}}</li>
+			</ul>
+			<ul>
+				<li v-for="(value,key,index) in obj">{{index}}-{{key}}-{{value}}</li>
+			</ul>
+			<ul>
+				<li v-for="n in even(numbers)">{{n}}</li>
+			</ul>
+		</div>
+	</body>
+	<script>
+		var app2=new Vue({
+			el:"#app2",
+			data:{
+				items:[
+					{name:'牛'},
+					{name:'张'},
+					{name:'王'}],
+				obj:{
+					firstName:'a',
+					lastName:'b',
+					age:28
+				},
+				item:[1,2,3],
+				numbers:[1,2,3,4,5,6]
+				
+			},
+			methods:{
+				even:function(numbers){
+					return numbers.filter(function(number){
+						return number%2==0
+					})
+				}
+			}
+			
+		})
+//		app2.item.splice(0, 1, 'aa')
+//Vue.set(app2.item,0,'bb')
+//app2.item.splice(2)
+//app2.$set(app2.obj,'user','niu')
+app2.obj=Object.assign({},app2.obj,{
+	user:'niu',
+	pass:"123123"
+})
+		var app1=new Vue({
+			el:"#app1",
+			data:{
+				intType:'user'
+			},
+			methods:{
+				change:function(){
+					
+					if (this.intType=='user') {
+						this.intType='password'
+					} else{
+						this.intType='user'
+					}
+					console.log(this.intType)
+				}
+			}
+		})
+		var app=new Vue({
+			el:'#app',
+			data:{
+				objStyle:{
+					background:"#ccc",
+					color:"red",
+					fontSize:18+'px'
+				},
+				box_bg:'box_bg',
+				box_font:'box_font',
+				istrue:true
+			}
+		})
+		var vm = new Vue({
+		  el: '#demo',
+		  data: {
+		    firstName: 'Foo',
+		    lastName: 'Bar',
+		  },
+		  computed:{
+		  	fullName:{
+		  		get:function(){
+		  			return this.firstName+" "+this.lastName
+		  		},
+		  		set:function(value){
+		  			var names=value.split(" ");
+		  			this.firstName=names[0];
+		  			this.lastName=names[names.length-1]
+		  		}
+		  	}
+		  }
+			})
+	</script>
+</html>

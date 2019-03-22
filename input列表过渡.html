@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script type="text/javascript" src="js/vue.js" ></script>
+		<style>
+			#app{overflow: hidden;position: relative;}
+			.group-enter-active,.group-leave-active{transition: 0.5s;}
+			.group-leave-active{position: absolute;}
+			.group-enter,.group-leave-to{opacity: 0;transform: translate(100px);}
+			.group-move{transition: 0.5s;}
+		</style>
+	</head>
+	<body>
+		<div id="app">
+			<input v-model="query" />
+			<transition-group name='group' tag='ul'>
+				<li v-bind:key='item.name' v-for="(item,index) in computedList">{{item.name}}</li>
+			</ul>
+		</div>
+		
+	</body>
+	<script>
+		var app= new Vue({
+			el:"#app",
+			data:{
+				query:'',
+				items:[{name:'niulei'},{name:'zhangyan'},{name:'zhangsan'},{name:'lisi'}]
+			},
+			computed:{
+				computedList:function(){
+					var vm=this
+					return this.items.filter(function(item){
+						return item.name.toLowerCase().indexOf(vm.query.toLowerCase())!==-1
+					})
+				}
+			}
+			
+		})
+	</script>
+</html>

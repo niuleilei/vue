@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script type="text/javascript" src="js/vue.js" ></script>
+	</head>
+	<body>
+		<!--文本-->
+		<div id="app">
+			<input v-model="msg" />
+			<p>{{msg}}</p>
+			<textarea v-model="text"></textarea>
+			<p>{{text}}</p>
+		</div>
+		<!--复选框-->
+		<div id="app1">
+			<input type="checkbox" id="int1" value="Joker" v-model="checkNames"  />
+			<label for="int1">joker</label>
+			<input type="checkbox" id="int2" value="Faker" v-model="checkNames"  />
+			<label for="int2">Faker</label>
+			<input type="checkbox" id="int3" value="joon" v-model="checkNames"  />
+			<label for="int3">joon</label>
+			<p>选择：{{checkNames}}</p>
+		</div>
+		<!--单选-->
+		<div id="app2">
+			<input type="radio" id="radio1" value="one" v-model="pick" />
+			<label for="radio1">one</label>
+			<input type="radio" id="radio2" value="two" v-model="pick" />
+			<label for="radio2">two</label>
+			<p>pick:{{pick}}</p>
+		</div>
+		<!--下拉选择框-->
+		<div id="app3">
+			<select v-model="selected">
+				<option value="" disabled="disabled">请选择</option>
+				<option>A</option>
+				<option>B</option>
+				<option>C</option>
+			</select>
+			<p>selected:{{selected}}</p>
+			<select v-model="selected2">
+				<option v-for="text in selected1" v-bind:value="text.value">{{text.text}}</option>
+			</select>
+			<p>selected1:{{selected2}}</p>
+			<input type="radio" value="a" v-model="radio1" />
+			<p>{{radio1}}</p>
+			
+		</div>
+		<!--修饰符-->
+		<div id="app4">
+			<input type="text" v-model.lazy="msg" />
+			<p>msg:{{msg}}</p>
+			<input type="number" v-model.number='num' />
+			<p>num:{{num}}</p>
+			<input type="text" v-model.trim="msg1" />
+			<p>msg:{{msg1}}</p>
+		</div>1
+	</body>
+	<script>
+		var app4=new Vue({
+			el:"#app4",
+			data:{
+				msg:"",
+				msg1:"",
+				num:""
+			}
+		})
+		var app3=new Vue({
+			el:"#app3",
+			data:{
+				msg:"",
+				radio1:'a',
+				selected:"",
+				selected2:'',
+				selected1:[
+				{text:12,value:'A'},
+				{text:13,value:'B'},
+				{text:14,value:'C'}]
+			}
+		})
+		var app2=new Vue({
+			el:"#app2",
+			data:{
+				pick:''
+			}
+		})
+		var app=new Vue({
+			el:"#app",
+			data:{
+				msg:'',
+				text:''
+			}
+		})
+		var app1=new Vue({
+			el:'#app1',
+			data:{
+				checkNames:[]
+			}
+		})
+	</script>
+</html>

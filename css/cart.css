@@ -1,0 +1,84 @@
+*{padding: 0;margin: 0;text-decoration: none;list-style: none;}
+html,body{height: 100%;}
+#cart{width: 1280px;margin: auto;margin-bottom: 50px;}
+.cart_title{position: relative;border-bottom: 1px solid #ccc;text-align: center;margin-top: 30px;margin-bottom: 40px;}
+.cart_title span{display: inline-block;padding: 0 15px;background: #fff;position: relative;top: 20px;line-height: 40px;font-size: 20px;font-weight: 700;}
+#cart_box{}
+.box_head{height: 50px;background: #666;color: #fff;}
+.box_head ul li{float: left;line-height: 50px;width: 150px;text-align: center;font-size: 18px;}
+.box_head ul li:nth-child(1){width: 680px;}
+
+.list_ul > li{border: 1px solid #ccc;border-top: 0;box-sizing: border-box;}
+.list_line_ul:after,.box_list:after{display:block;content: "";clear: both;}
+.list_line_ul li{float: left;width: 149px;}
+.list_line_ul li:nth-child(1){width: 680px;padding: 20px 10px;box-sizing: border-box;}
+.list_line_ul li:nth-child(2){margin-top: 55px;}
+.list_line_ul li:nth-child(3){margin-top: 50px;text-align: center;}
+.list_line_ul li:nth-child(5){margin-top: 50px;text-align: center;}
+.check{float: left;margin-top: 30px; margin-left: 20px;}
+.item_photo{width: 80px;height: 72px;float: left;margin-left: 20px;}
+.item_title{display:inline-block;margin-left: 20px;}
+.item_note{clear: both;margin-left: 150px;color:#666;font-size: 14px;}
+.item_note span{display: inline-block;margin-left: 8px;color: #333;}
+.item_num{text-align: center;color: #cc0000;font-size: 18px;margin-top: 50px;}
+.numInput{height: 28px;width: 40px;text-align: center;}
+.btn_comp{font-size: 18px;color: #666;cursor:pointer;}
+.delList{text-align: center;cursor: pointer;}
+#cart_bottom{}
+.set_check{float: left;padding: 20px 30px;}
+.unselect,.select{cursor: pointer;display: inline-block;color: #666;}
+.price_box{float: right;width: 350px;}
+.priceAll{font-size: 22px;color: #cc0000;float: left;line-height: 60px;}
+.submitBtn{display: inline-block;padding: 20px 40px;background:#CC0000;color: #fff ;float: right;}
+.active{background: #fafafa;}
+.mask_layer{position:fixed;top: 0;left: 0;z-index: 10;height: 100%;width: 100%;background: #000;opacity: 0.6;}
+.delete_hide{
+	background: #fff;position: fixed;
+	width: 400px;height: 220px;z-index: 11;top: 0;left: 0;bottom: 0;right: 0;margin: auto;
+	border-radius: 5px;
+	visibility: hidden;
+	opacity: 0;
+	transition: 0.3s;
+	transform: translateY(30px) scale(0);
+}
+.delete_box{
+	visibility:visible;
+	opacity: 1;
+	transition: 0.3s;
+	transform: translateY(-30px) scale(1);
+	
+}
+.del_span{font-size: 35px;
+	display:inline-block;
+	height: 35px;
+	width: 35px;
+	text-align: center;
+	overflow: hidden;
+	line-height: 28px;
+	cursor: pointer;
+	color: #666;
+	position: absolute;
+	top: 0;right: 0;}
+.del_span:hover{color: #333;transform: rotate(180deg);transition: 0.5s;}
+.del_title{color: #333;text-align: center;margin-top: 80px;}
+.del_btn{
+	display: inline-block;
+	padding: 12px 70px;
+	text-align: center;
+	border:1px solid #CC0000;
+	margin-left: 21px;
+	margin-top: 40px;
+	color: #CC0000;
+}
+.del_btn:hover{
+	color: #fff;
+	background: #CC0000;
+	transition: 0.4s linear ;
+}
+.fade-enter-active,.fade-leave-active{
+	transition: 0.3;
+}
+.fade-enter,.fade-leave-to{
+	transform: translateY(30px);
+	
+}

@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		
+		<link rel="stylesheet" href="css/cart.css" />
+	</head>
+	<body>
+		<div id="cart">
+			<div class="cart_title">
+				<span>购物车</span>
+			</div>
+			<div id="cart_box">
+				<div class="box_head">
+					<ul>
+						<li>商品信息</li>
+						<li>商品金额</li>
+						<li>商品数量</li>
+						<li>总金额</li>
+						<li>编辑</li>
+					</ul>
+				</div>
+				<div class="box_list">
+					<ul class="list_ul">
+						<li v-for="item in loadList"  :class="{active:item.checked}">
+							<ul class="list_line_ul">
+								<li>
+									<input type="checkbox" class="check" v-model="item.checked" @click="setcheck(item)"/>
+									<img :src="item.productImage" class="item_photo">
+									<p class="item_title">{{item.productName}}</p>
+									<p class="item_note">赠送<span v-for="item in item.parts">{{item.partsName}}</span></p>
+								</li>
+								<li class="item_num">{{item.productPrice | price}}</li>
+								<li>
+									<a href="javascript:;" class="btn_comp" @click="changeNum(item,false)">-</a>
+									<input type="text" disabled class="numInput" v-model="item.productQuantity" />
+									<a href="javascript:;" class="btn_comp" @click="changeNum(item,true)">+</a>
+								</li>
+								<li class="item_num">{{item.productQuantity*item.productPrice |  price}}</li>
+								<li><img src="img/icon_del.png" class="delList" @click="delList(item)"></li>
+							</ul>
+						</li>
+					</ul>
+					<div id="cart_bottom">
+						<div class="set_check">
+								<input type="checkbox" id="checkbox" v-model="checkAllFlag" :disabled="checkAllFlag" @click="checkAll(true)" />
+							    <label >全选</label>
+							<a href="javascript:;" class="unselect" @click="checkAll(false)">取消全选</a>
+						</div>
+						<div class="price_box">
+							<p class="priceAll">总计：<span>{{total | price}}</span></p>
+							<a href="#" class="submitBtn">结账</a>
+						</div>
+					</div>
+				</div>
+			</div>
+			<!--遮罩层-->
+			<div class="mask_layer" v-if="deleteList"></div>
+			<!--删除弹窗-->
+			<transition name='fade'>
+			<div class="delete_hide" :class="{'delete_box':deleteList}">
+				<span class="del_span" @click="deleteList=false">×</span>
+				<p class="del_title">你确认删除此订单信息吗?</p>
+				<a href="javascipt:;" class="del_btn del_yes" @click="delCheckAllFlag">Yes</a>
+				<a href="javascipt:;" class="del_btn del_no" @click="deleteList=false">No</a>
+			</div>
+			</transition>
+		</div>
+		<script type="text/javascript" src="js/vue.js" ></script>
+		<script type="text/javascript" src="js/vue-resource.js" ></script>
+		<script type="text/javascript" src="js/cart.js" ></script>
+	</body>
+</html>

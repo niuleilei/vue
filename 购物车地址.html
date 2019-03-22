@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<link rel="stylesheet" href="css/address.css" />
+	</head>
+	<body>
+		<div id="address">
+			<div id="address_title">
+				<ul class="clear">
+					<li class="curr">地址确认</li>
+					<li>查看订单</li>
+					<li>支付</li>
+					<li>订单确认</li>
+				</ul>
+			</div>
+			<div class="title_line">
+				<span>配送地址</span>
+			</div>
+			<div id="addressBox" class="clear">
+				<div class="add_box" v-for="(item,index) in filterList" @click="defualtIndex=index" :class="{add_class:defualtIndex==index}" :key='item.addressId'>
+					<p class="add_box_name">{{item.userName}}</p>
+					<p class="add_box_address">{{item.streetName}}</p>
+					<p class="add_box_tel">{{item.tel}}</p>
+					<p class="add_box_default" v-if="item.isDefault">默认地址</p>
+					<p class="add_box_default" v-if="!item.isDefault" @click="setDefualt(index)">设为默认地址</p>
+					<img src="img/icon_del.png" class="add_box_del" @click="deleteBox(index)">
+				</div>
+				<div class="add_box">
+					<img src="img/bg.jpg" class="add_box_bg">
+					<p class="new_address">添加新地址</p>
+				</div>
+			</div>
+			<div class="load_add">
+				<p @click="minLength=addressList.length">more<span>></span></p>
+			</div>
+		</div>
+	</body>
+	<script type="text/javascript" src="js/vue.js" ></script>
+	<script type="text/javascript" src="js/vue-resource.js" ></script>
+	<script type="text/javascript" src="js/address.js" ></script>
+</html>

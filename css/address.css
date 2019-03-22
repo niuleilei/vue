@@ -1,0 +1,125 @@
+*{padding: 0;margin: 0;text-decoration: none;list-style: none;}
+.clear:after{
+	display: block;
+	content: "";
+	clear: both;
+}
+#address{
+	width: 1280px;margin: auto;
+	
+}
+#address_title{
+	width: 100%;
+	margin-top: 30px;
+}
+
+#address_title ul li{
+	width: 25%;
+	float: left;
+	border-bottom: 2px solid #CCCCCC;
+	color: #CCCCCC;
+	text-align: center;
+	line-height: 50px;
+	position: relative;
+}
+#address_title ul li:after{
+	display: block;
+	height: 16px;
+	width: 16px;
+	border-radius: 50%;
+	background: #CCCCCC;
+	content: "";
+	position: absolute;
+	bottom: -8px;
+	left: 50%;
+	margin-left: -8px;	
+}
+#address_title ul li.curr{
+	color: #EE7A23;
+	border-color: #EE7A23;
+}
+#address_title ul li.curr:after{
+	background: #EE7A23;
+}
+.title_line{
+	border-bottom: 1px solid #ccc;
+	text-align: center;
+	padding-top: 30px;
+}
+.title_line span{
+	display: inline-block;
+	padding: 5px 20px;
+	background: #fff;
+	position: relative;
+	top: 15px;
+	font-size: 18px;
+	color: #666;
+}
+.add_box{
+	width: 300px;
+	height: 170px;
+	border: 2px solid #ccc;
+	box-sizing: border-box;
+	padding: 10px 15px;
+	cursor: pointer;
+	float: left;
+	margin-left: 26px;
+	margin-top: 25px;
+	position: relative;
+}
+.add_box:nth-child(4n+1){
+	margin-left: 0px;
+}
+.add_box:hover{
+	border-color: #EE7A23;
+}
+
+.add_box.add_class{
+	border-color: #EE7A23;
+}
+.add_box_name{
+	font-size: 20px;
+	color: #333;
+}
+.add_box_address{
+	font-size: 14px;
+	color: #666;
+	margin-top: 15px;
+}
+.add_box_tel{
+	font-size: 14px;
+	color: #666;
+	margin-top: 30px;
+}
+.add_box_default{
+	color: #EE7A23;
+	margin-top: 8px;
+	font-size: 14px;
+}
+.add_box_bg{
+	display: block;
+	margin: auto;
+	margin-top: 30px;
+}
+
+.add_box_del{
+	position: absolute;
+	top: 20px;right: 30px;
+	display: none;
+}
+.add_box:hover .add_box_del{
+	display: block;
+}
+.new_address{
+	text-align: center;
+	color: #333333;
+	font-size: 14px;
+	margin-top: 5px;
+}
+.load_add{
+	text-align: center;
+	margin-top: 15px;
+}
+.load_add p{color: #EE7A23;font-size: 14px;display: inline-block;cursor: pointer;}
+.load_add p span{transform:rotate(90deg);display: inline-block;margin-left: 6px;margin-top: 5px;}
+.load_add p:hover span{transform:rotate(-90deg);transition: 0.5s;transform-origin: center;}

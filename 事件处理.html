@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script type="text/javascript" src="js/vue.js" ></script>
+	</head>
+	<body>
+		<div id="app">
+			<button v-on:click.prevent="addClick" v-bind:disabled="disabled">Add</button>
+			<a href="http://www.baidu.com" v-on:click.prevent="addClick">aaa</a>
+			<p>{{counter}}</p>
+			<!--事件修饰符-->
+			<!--
+			.stop  阻止冒泡修饰符
+			.prevent  阻止元素发生默认行为
+			.capture  捕获
+			.self   只点自己身上才运行
+			.once   只执行一次
+			.passive 滚动事件的默认行为 (即滚动行为)将会立即触发     不能和.prevent修饰符一同使用
+			
+			-->
+			
+			<!--按键修饰符-->
+			<input v-on:keyup="change" />
+			<button v-on:click.exact="onClick">点击</button>
+		</div>
+		<script>
+			var vm=new Vue({
+				el:"#app",
+				data:{
+					counter:0,
+					disabled:false
+				},
+				methods:{
+					addClick:function(event){
+						this.counter++;
+						console.log(event.target)
+						if(this.counter==10){
+							console.log("到头了")
+							this.disabled=true
+						}
+					},
+					change:function(e){
+						console.log(e)
+					},
+					onClick:function(){
+						console.log("aaa")
+					}
+				}
+			})
+		</script>
+	</body>
+</html>

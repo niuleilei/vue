@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script type="text/javascript" src="js/vue.js" ></script>
+	</head>
+	<body>
+		<div id="app">
+			<button-counter></button-counter>
+			<button-counter></button-counter>
+			<button-counter></button-counter>
+			<!--通过 Prop 向子组件传递数据-->
+			
+			<blog-post
+			  v-bind:style="{fontSize: postFontSize + 'em'}"
+			  v-for="post in posts"
+			  v-bind:key="post.id"
+			  v-bind:title="post.title"
+			  v-bind:content="post.content"
+			  v-bind:time="post.time"
+			  :comments="post.comments"
+			  :post="post"
+			  v-on:a-text='postFontSize+=0.1'
+			></blog-post>
+		</div>
+		
+		
+	</body>
+	<script>
+		Vue.component('blog-post',{
+			props:['post'],
+			template:`
+			<div>
+			<h3>{{post.title}}</h3>
+			<div v-html='post.content'></div>
+			<span>{{post.comments}}</span>
+			<button v-on:click='$emit("a-text")'>点击</button>
+			</div>`
+		})
+		Vue.component('button-counter',{
+			data:function(){
+				return{
+					count:0
+				}
+			},
+			template:'<button v-on:click="count++">{{count}}</button>'
+		})
+		var app= new Vue({
+			el:"#app",
+			 data:{
+			 	posts: [
+			      { id: 1, title: 'My journey with Vue',content:'文章内容1',comments:'评论1',time:'2018-02-02'},
+			      { id: 2, title: 'Blogging with Vue' ,content:'文章内容2',comments:'评论2',time:'2018-02-01'},
+			      { id: 3, title: 'Why Vue is so fun' ,content:'文章内容3',comments:'评论3',time:'2018-02-04'}
+			    ],
+			    postFontSize:1
+			 }
+		})
+	</script>
+</html>

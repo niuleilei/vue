@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			html,body{height: 100%;}
+			#pay_loading{
+				height: 100%;width: 100%;
+				background: #FFFFFF;
+				opacity: 0.7;
+				display: none;
+				position: fixed;
+				left: 0;
+				top: 0;
+				z-index: 999;
+			}
+			#pay_loading_pic{
+				position: fixed;
+				left: 0;
+				right: 0;
+				top: 10%;
+				margin: auto;
+				max-width: 450px;
+				display: none;
+				z-index: 1000;
+			}
+		</style>
+	</head>
+	<body>
+		<button id="symi_pay_submit">支付</button>
+		<div id="pay_loading"></div>
+		<img src="img/loading_pic.gif" id="pay_loading_pic">
+	</body>
+	<script>
+		var payBtn=document.getElementById("symi_pay_submit");
+		var payLayer=document.getElementById("pay_loading");
+		var payLoadingPic=document.getElementById("pay_loading_pic");
+		payBtn.onclick=function(){
+			payLayer.style.display='block'
+			payLoadingPic.style.display='block'
+		}
+	</script>
+</html>
